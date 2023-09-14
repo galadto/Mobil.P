@@ -132,6 +132,8 @@ fun topScreen(){
                     text = "Gimnasio UL",
                     textAlign = TextAlign.Center,
                     color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
                     //fontSize = 40.sp,
                     modifier =  Modifier.padding(top = 20.dp, bottom = 20.dp),
                         style = MaterialTheme.typography.h4.copy(
@@ -176,7 +178,7 @@ fun loginForm(screenWidthDp: Int, screenHeightDp: Int){
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Text1(text ="Bienvenido al Sistema", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Text1(text ="INGRESA ESTA INFORMACION", fontWeight = FontWeight.Normal, fontSize = 13.sp)
                     TextFieldWithLeadingIcon(
                         leadingIcon = Icons.Default.Person, // Replace with your desired icon
                         placeholder = "Usuario",
