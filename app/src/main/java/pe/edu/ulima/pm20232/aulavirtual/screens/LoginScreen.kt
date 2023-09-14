@@ -104,11 +104,11 @@ fun TextFieldWithLeadingIcon(
 
 @Composable
 fun topScreen(){
-    Column(modifier =Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Orange400)
+                .background(Gray400)
                 .weight(3f)
                 .padding(8.dp),
             contentAlignment = Alignment.TopCenter
@@ -126,12 +126,12 @@ fun topScreen(){
                     painter = painterResource(id = R.drawable.ic_ulima), // Replace with your SVG resource ID
                     contentDescription = "Universidad de Lima",
                     modifier = Modifier.size(120.dp),
-                    colorFilter = ColorFilter.tint(White400),
+                    colorFilter = ColorFilter.tint(Orange400),
                 )
                 Text1(
-                    text = "Gimnasio UL",
+                    text = "Gimnasio ULima",
                     textAlign = TextAlign.Center,
-                    color = Color.White,
+                    color = Color.Black,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     //fontSize = 40.sp,
@@ -139,7 +139,7 @@ fun topScreen(){
                         style = MaterialTheme.typography.h4.copy(
                         fontSize = 40.sp,
                         fontFamily = FontFamily(Font(R.font.caslon_classico_sc_regular)),
-                        color = if (isSystemInDarkTheme()) White400 else Orange400 // Apply the custom text color here
+                        color = if (isSystemInDarkTheme()) Black100 else Orange400 // Apply the custom text color here
                     )
                 )
             }
@@ -153,7 +153,7 @@ fun loginForm(screenWidthDp: Int, screenHeightDp: Int){
         modifier = Modifier
             .fillMaxSize()
             .padding(top = (screenHeightDp * 0.30).dp,)
-            .background(Gray1200),
+            .background(White400),
     ) {
         Box(modifier = Modifier.padding(
             start = (screenWidthDp * 0.125).dp,
@@ -182,6 +182,7 @@ fun loginForm(screenWidthDp: Int, screenHeightDp: Int){
                     TextFieldWithLeadingIcon(
                         leadingIcon = Icons.Default.Person, // Replace with your desired icon
                         placeholder = "Usuario",
+
                         text = "",
                         onTextChanged = {
                             println(it)
@@ -219,7 +220,7 @@ fun goToReset(){
     ){
         Row() {
             Text1(text = "Olvidó su contraseña? ", textAlign = TextAlign.End, color = Gray800, fontSize = 16.sp)
-            Text1(text = "Cambiala Aquí", textAlign = TextAlign.End, color = Orange400, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Text1(text = "Recuperalo Aquí", textAlign = TextAlign.End, color = Orange400, fontSize = 16.sp, fontWeight = FontWeight.Bold)
         }
     }
 }
