@@ -4,6 +4,8 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
@@ -24,10 +26,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pe.edu.ulima.pm20232.aulavirtual.R
+import pe.edu.ulima.pm20232.aulavirtual.composables.LoginScreenComposable
+import pe.edu.ulima.pm20232.aulavirtual.screenmodels.FormViewModel
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.*
 import androidx.compose.material.Text as Text1
 
-@Composable
+/*@Composable
 fun ButtonWithIcon(
     text: String,
     icon: ImageVector,
@@ -208,7 +212,7 @@ fun loginForm(screenWidthDp: Int, screenHeightDp: Int){
             }
         }
     }
-}
+}*/
 
 @Composable
 fun goToReset(){
@@ -226,12 +230,13 @@ fun goToReset(){
 }
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(viewModel: FormViewModel) {
     val configuration = LocalConfiguration.current
     val screenWidthDp = configuration.screenWidthDp
     val screenHeightDp = configuration.screenHeightDp
 
-    topScreen()
-    loginForm(screenWidthDp, screenHeightDp)
+    //topScreen()
+    //loginForm(screenWidthDp, screenHeightDp)
+    LoginScreenComposable(viewModel, "INGRESA ESTA INFORMACIÓN", Icons.Default.Person, "Usuario", Icons.Default.Lock, "Contraseña", "LOGIN")
     goToReset()
 }
