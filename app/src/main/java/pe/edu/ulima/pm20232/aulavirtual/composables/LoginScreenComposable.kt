@@ -1,7 +1,8 @@
 package pe.edu.ulima.pm20232.aulavirtual.composables
-
+//Importar recursos de otras carpetas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -21,10 +22,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -55,10 +52,10 @@ import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange800
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.White400
 
 @Composable
-fun TopScreen(){
+fun TopScreen(screenHeightDp: Int){
     Column(modifier =Modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.fillMaxWidth().background(Gray1200).weight(3f).padding(8.dp),
+            modifier = Modifier.fillMaxWidth().background(Gray1200).padding(top = (screenHeightDp * 0.07).dp).height((screenHeightDp * 0.41).dp),
             contentAlignment = Alignment.TopCenter
         ) {
             val paddingPercentage = 60;
@@ -97,13 +94,12 @@ fun TopScreen(){
 @Composable
 fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel, textoSuperior: String, iconoForm1: ImageVector, textoForm1: String, iconoForm2: ImageVector, textoForm2: String, textoBoton: String){
     Box( // caja gris (light)
-        modifier = Modifier.fillMaxSize().padding(top = (screenHeightDp * 0.35).dp,).background(
-            White400
-        ),
+        modifier = Modifier.fillMaxSize().padding(top = (screenHeightDp * 0.33).dp,), //.background(White400),
     ) {
         Box(modifier = Modifier.padding(
             start = (screenWidthDp * 0.125).dp,
-            top = (40.dp)
+            top = (40.dp),
+            bottom = (186.dp)
         ),){
             Box(
                 modifier = Modifier
@@ -111,20 +107,15 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                         (screenWidthDp * 0.75).dp,
                         (screenHeightDp * 0.42 ).dp
                     ) // Adjust the size as needed
-                    //.border(1.dp, Gray800)
+                    .border(1.dp, Color.LightGray)
                     .background(White400)
-                    .shadow(
-                        elevation = 5.dp,
-                        shape = MaterialTheme.shapes.medium,
-                        //color = Color.Gray
-                    )
-                    .padding(start = 20.dp, top = 30.dp, bottom = 20.dp, end = 20.dp),
+                    .padding(start = 20.dp, top = 40.dp, bottom = 10.dp, end = 20.dp),
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Text(text = textoSuperior, fontWeight = FontWeight.Normal, fontSize = 13.sp)
+                    Text(text = textoSuperior, fontWeight = FontWeight.Normal, fontSize = 15.sp, modifier = Modifier.padding(bottom = 10.dp))
                     TextFieldWithLeadingIcon(
                         leadingIcon = iconoForm1, // Replace with your desired icon
                         placeholder = textoForm1,
@@ -150,17 +141,17 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                         horizontalArrangement = Arrangement.Center,
                     ) {
                         Button({ viewModel.btnAccessPressed() },
-                            modifier = Modifier.fillMaxWidth().height(55.dp),
+                            modifier = Modifier.fillMaxWidth().height(48.dp).padding(start = 15.dp, end = 15.dp),
                             colors = ButtonDefaults.buttonColors(
                                 backgroundColor = Orange500, // Button background color
                                 contentColor = Color.Black // Text and icon color
                             ),
-                            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
+                            contentPadding = PaddingValues(8.dp),
                         ) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(textoBoton)
+                                Text(text = textoBoton, fontWeight = FontWeight.ExtraBold)
                             }
                         }
                     }
@@ -184,7 +175,7 @@ fun TextFieldWithLeadingIcon(
         modifier = Modifier
             .fillMaxWidth()
             //.border(1.dp, borderColor)
-            .padding(5.dp)
+            .padding(start = 15.dp, end = 15.dp)
             .background(color = Color.Transparent)
         ,
         value = text,
@@ -192,19 +183,19 @@ fun TextFieldWithLeadingIcon(
             onTextChanged(it)
         },
         placeholder = {
-            Text(text = placeholder, fontSize = 16.sp)
+            Text(text = placeholder, fontSize = 16.sp, modifier = Modifier.padding(start = 10.dp))
         },
         singleLine = true,
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.White,
             focusedIndicatorColor = Color.LightGray,
-            unfocusedIndicatorColor = Orange800
+            unfocusedIndicatorColor = Color.LightGray,
         ),
         leadingIcon = {
             Icon(
                 imageVector = leadingIcon,
                 contentDescription = null,
-                tint = (if (isSystemInDarkTheme()) White400 else Orange400),
+                tint = (if (isSystemInDarkTheme()) White400 else Black100),
                 modifier = Modifier
                     .padding(4.dp)
                     .size(24.dp)
@@ -217,9 +208,7 @@ fun TextFieldWithLeadingIcon(
 @Composable
 fun LoginScreenComposable(viewModel: FormViewModel, textoSuperior: String, iconoForm1: ImageVector, textoForm1: String, iconoForm2: ImageVector, textoForm2: String, textoBoton: String) {
     val configuration = LocalConfiguration.current
-    val screenWidthDp = configuration.screenWidthDp
-    val screenHeightDp = configuration.screenHeightDp
 
-    TopScreen()
-    LoginForm(screenWidthDp, screenHeightDp, viewModel, textoSuperior, iconoForm1, textoForm1, iconoForm2, textoForm2, textoBoton)
+    TopScreen(configuration.screenHeightDp)
+    LoginForm(configuration.screenWidthDp, configuration.screenHeightDp, viewModel, textoSuperior, iconoForm1, textoForm1, iconoForm2, textoForm2, textoBoton)
 }
