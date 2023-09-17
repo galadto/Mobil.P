@@ -41,8 +41,8 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("main") {
                             // Replace with your main screen Composable
-                            //PasswordScreen(loginScreenViewModel)
-                            LoginScreen(loginScreenViewModel)
+                            PasswordScreen(loginScreenViewModel)
+                            //LoginScreen(loginScreenViewModel)
                             //ProfileScreen()
                         }
                     }
@@ -55,12 +55,4 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AulaVirtualTheme {
-        Greeting("Android")
-    }
 }

@@ -56,7 +56,7 @@ import pe.edu.ulima.pm20232.aulavirtual.ui.theme.White400
 fun TopScreen(screenHeightDp: Int){
     Column(modifier =Modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.fillMaxWidth().background(Gray1200).padding(top = (screenHeightDp * 0.07).dp).height((screenHeightDp * 0.41).dp),
+            modifier = Modifier.fillMaxWidth().background(Gray1200).padding(top = (screenHeightDp * 0.05).dp).height((screenHeightDp * 0.41).dp),
             contentAlignment = Alignment.TopCenter
         ) {
             val paddingPercentage = 60;
@@ -71,19 +71,19 @@ fun TopScreen(screenHeightDp: Int){
                 Image(
                     painter = painterResource(id = R.drawable.ic_ulima), // Replace with your SVG resource ID
                     contentDescription = "Universidad de Lima",
-                    modifier = Modifier.size(120.dp),
+                    modifier = Modifier.size(105.dp),
                     colorFilter = ColorFilter.tint(Orange500),
                 )
                 Text(
                     text = "Gimnasio ULima",
                     textAlign = TextAlign.Center,
                     color = Color.Black,
-                    fontSize = 20.sp,
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     modifier =  Modifier.padding(top = 20.dp, bottom = 20.dp),
                     style = MaterialTheme.typography.h4.copy(
                         fontSize = 40.sp,
-                        fontFamily = FontFamily(Font(R.font.caslon_classico_sc_regular)),
+                        fontFamily = FontFamily(Font(R.font.kanit_regular)),
                         color = if (isSystemInDarkTheme()) Black100 else Orange400 // Apply the custom text color here
                     )
                 )
@@ -99,28 +99,29 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
     ) {
         Box(modifier = Modifier.padding(
             start = (screenWidthDp * 0.125).dp,
-            top = (40.dp),
+            top = (6.dp),
             bottom = (186.dp)
         ),){
             Box(
                 modifier = Modifier
                     .size(
-                        (screenWidthDp * 0.75).dp,
-                        (screenHeightDp * 0.42 ).dp
+                        (screenWidthDp * 0.70).dp,
+                        (screenHeightDp * 0.35 ).dp
                     ) // Adjust the size as needed
                     .border(1.dp, Color.LightGray)
                     .background(White400)
-                    .padding(start = 20.dp, top = 40.dp, bottom = 10.dp, end = 20.dp),
+                    .padding(start = 20.dp, top = 34.dp, bottom = 10.dp, end = 20.dp),
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Text(text = textoSuperior, fontWeight = FontWeight.Normal, fontSize = 15.sp, modifier = Modifier.padding(bottom = 10.dp))
+                    Text(text = textoSuperior, fontWeight = FontWeight.Normal, fontSize = 13.sp, modifier = Modifier.padding(bottom = 10.dp))
                     TextFieldWithLeadingIcon(
                         leadingIcon = iconoForm1,// Replace with your desired icon
                         placeholder = textoForm1,
                         text = viewModel.texto1,
+
                         onTextChanged = {
                             println(it)
                             viewModel.texto1 = it
@@ -142,7 +143,7 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                         horizontalArrangement = Arrangement.Center,
                     ) {
                         Button({ viewModel.btnAccessPressed() },
-                            modifier = Modifier.fillMaxWidth().height(48.dp).padding(start = 15.dp, end = 15.dp),
+                            modifier = Modifier.fillMaxWidth().height(40.dp).padding(start = 15.dp, end = 15.dp),
                             colors = ButtonDefaults.buttonColors(
                                 backgroundColor = Orange500, // Button background color
                                 contentColor = Color.Black // Text and icon color
@@ -152,7 +153,7 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(text = textoBoton, fontWeight = FontWeight.ExtraBold)
+                                Text(text = textoBoton, fontWeight = FontWeight.ExtraBold, fontSize = 12.sp,)
                             }
                         }
                     }

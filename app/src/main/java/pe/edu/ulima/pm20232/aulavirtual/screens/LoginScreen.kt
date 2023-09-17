@@ -31,7 +31,7 @@ import pe.edu.ulima.pm20232.aulavirtual.screenmodels.FormViewModel
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.*
 import androidx.compose.material.Text as Text1
 
-/*@Composable
+@Composable
 fun ButtonWithIcon(
     text: String,
     icon: ImageVector,
@@ -41,12 +41,12 @@ fun ButtonWithIcon(
         onClick = { onClick() },
         modifier = Modifier
             .fillMaxWidth()
-            .height(55.dp),
+            .height(30.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Orange400, // Button background color
             contentColor = Color.White // Text and icon color
         ),
-        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
+        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 20.dp),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
@@ -54,7 +54,7 @@ fun ButtonWithIcon(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(28.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text1(text = text)
@@ -133,7 +133,7 @@ fun topScreen(){
                     colorFilter = ColorFilter.tint(Orange400),
                 )
                 Text1(
-                    text = "Gimnasio ULima",
+                    text = "GimLima",
                     textAlign = TextAlign.Center,
                     color = Color.Black,
                     fontSize = 20.sp,
@@ -142,7 +142,7 @@ fun topScreen(){
                     modifier =  Modifier.padding(top = 20.dp, bottom = 20.dp),
                         style = MaterialTheme.typography.h4.copy(
                         fontSize = 40.sp,
-                        fontFamily = FontFamily(Font(R.font.caslon_classico_sc_regular)),
+                        fontFamily = FontFamily(Font(R.font.kanit_regular)),
                         color = if (isSystemInDarkTheme()) Black100 else Orange400 // Apply the custom text color here
                     )
                 )
@@ -212,19 +212,19 @@ fun loginForm(screenWidthDp: Int, screenHeightDp: Int){
             }
         }
     }
-}*/
+}
 
 @Composable
 fun goToReset(){
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp),
+            .padding(38.dp),
         contentAlignment = Alignment.BottomCenter
     ){
         Row() {
-            Text1(text = "Olvidó su contraseña? ", textAlign = TextAlign.End, color = Gray800, fontSize = 16.sp)
-            Text1(text = "Recuperalo Aquí", textAlign = TextAlign.End, color = Orange400, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            Text1(text = "Olvidaste tu contraseña? ", textAlign = TextAlign.End, color = Gray800, fontSize = 13.sp)
+            Text1(text = "Recupérala aquí", textAlign = TextAlign.End, color = Orange400, fontSize = 13.sp, fontWeight = FontWeight.Bold)
         }
     }
 }
