@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
@@ -117,13 +118,13 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                 ){
                     Text(text = textoSuperior, fontWeight = FontWeight.Normal, fontSize = 15.sp, modifier = Modifier.padding(bottom = 10.dp))
                     TextFieldWithLeadingIcon(
-                        leadingIcon = iconoForm1, // Replace with your desired icon
+                        leadingIcon = iconoForm1,// Replace with your desired icon
                         placeholder = textoForm1,
                         text = viewModel.texto1,
                         onTextChanged = {
                             println(it)
                             viewModel.texto1 = it
-                        }
+                        },
                     )
                     TextFieldWithLeadingIcon(
                         leadingIcon = iconoForm2, // Replace with your desired icon
