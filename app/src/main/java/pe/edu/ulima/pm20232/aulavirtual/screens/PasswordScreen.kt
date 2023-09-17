@@ -39,7 +39,6 @@ fun Flechita() {
 
 @Composable
 fun PasswordScreen(viewModel: FormViewModel) {
-
     Flechita()
     LoginScreenComposable(viewModel, "SOLICITE CAMBIO DE CONTRASEÑA", Icons.Default.AccountBox, "DNI", Icons.Default.Email, "Correo", "ENVIAR CORREO")
 }
