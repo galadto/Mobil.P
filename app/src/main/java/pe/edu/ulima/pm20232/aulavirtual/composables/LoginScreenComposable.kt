@@ -47,6 +47,8 @@ import pe.edu.ulima.pm20232.aulavirtual.R
 import pe.edu.ulima.pm20232.aulavirtual.screenmodels.FormViewModel
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Black100
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray1200
+import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray400
+import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Gray800
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange400
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange500
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.Orange800
@@ -56,7 +58,11 @@ import pe.edu.ulima.pm20232.aulavirtual.ui.theme.White400
 fun TopScreen(screenHeightDp: Int){
     Column(modifier =Modifier.fillMaxSize()) {
         Box(
-            modifier = Modifier.fillMaxWidth().background(Gray1200).padding(top = (screenHeightDp * 0.05).dp).height((screenHeightDp * 0.41).dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Gray1200)
+                .padding(top = (screenHeightDp * 0.05).dp)
+                .height((screenHeightDp * 0.41).dp),
             contentAlignment = Alignment.TopCenter
         ) {
             val paddingPercentage = 60;
@@ -72,7 +78,7 @@ fun TopScreen(screenHeightDp: Int){
                     painter = painterResource(id = R.drawable.ic_ulima), // Replace with your SVG resource ID
                     contentDescription = "Universidad de Lima",
                     modifier = Modifier.size(105.dp),
-                    colorFilter = ColorFilter.tint(Orange500),
+                    colorFilter = ColorFilter.tint(if(isSystemInDarkTheme()) Color.Black else Orange500),
                 )
                 Text(
                     text = "Gimnasio ULima",
@@ -95,7 +101,9 @@ fun TopScreen(screenHeightDp: Int){
 @Composable
 fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel, textoSuperior: String, iconoForm1: ImageVector, textoForm1: String, iconoForm2: ImageVector, textoForm2: String, textoBoton: String){
     Box( // caja gris (light)
-        modifier = Modifier.fillMaxSize().padding(top = (screenHeightDp * 0.33).dp,), //.background(White400),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = (screenHeightDp * 0.33).dp,), //.background(White400),
     ) {
         Box(modifier = Modifier.padding(
             start = (screenWidthDp * 0.125).dp,
@@ -106,10 +114,10 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                 modifier = Modifier
                     .size(
                         (screenWidthDp * 0.70).dp,
-                        (screenHeightDp * 0.35 ).dp
+                        (screenHeightDp * 0.35).dp
                     ) // Adjust the size as needed
                     .border(1.dp, Color.LightGray)
-                    .background(White400)
+                    .background(if (isSystemInDarkTheme()) Color.Gray else White400)
                     .padding(start = 20.dp, top = 34.dp, bottom = 10.dp, end = 20.dp),
             ) {
                 Column(
@@ -142,11 +150,15 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                             .padding(top = 25.dp),
                         horizontalArrangement = Arrangement.Center,
                     ) {
-                        Button({ viewModel.btnAccessPressed() },
-                            modifier = Modifier.fillMaxWidth().height(40.dp).padding(start = 15.dp, end = 15.dp),
+                        Button(
+                            { viewModel.btnAccessPressed() },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(40.dp)
+                                .padding(start = 15.dp, end = 15.dp),
                             colors = ButtonDefaults.buttonColors(
-                                backgroundColor = Orange500, // Button background color
-                                contentColor = Color.Black // Text and icon color
+                                backgroundColor = if (isSystemInDarkTheme()) Color.Black else Orange500, // Button background color
+                                contentColor = if(isSystemInDarkTheme()) Color.White else Color.Black // Text and icon color
                             ),
                             contentPadding = PaddingValues(8.dp),
                         ) {
@@ -178,8 +190,7 @@ fun TextFieldWithLeadingIcon(
             .fillMaxWidth()
             //.border(1.dp, borderColor)
             .padding(start = 15.dp, end = 15.dp)
-            .background(color = Color.Transparent)
-        ,
+            .background(color = Color.Transparent),
         value = text,
         onValueChange = {
             onTextChanged(it)
@@ -189,7 +200,7 @@ fun TextFieldWithLeadingIcon(
         },
         singleLine = true,
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.White,
+            backgroundColor = if(isSystemInDarkTheme()) Color.Gray else Color.White,
             focusedIndicatorColor = Color.LightGray,
             unfocusedIndicatorColor = Color.LightGray,
         ),
@@ -197,7 +208,7 @@ fun TextFieldWithLeadingIcon(
             Icon(
                 imageVector = leadingIcon,
                 contentDescription = null,
-                tint = (if (isSystemInDarkTheme()) White400 else Black100),
+                tint = (if (isSystemInDarkTheme()) Color.Black else Black100),
                 modifier = Modifier
                     .padding(4.dp)
                     .size(24.dp)
