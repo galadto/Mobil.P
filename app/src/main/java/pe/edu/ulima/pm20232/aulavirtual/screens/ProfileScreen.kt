@@ -10,8 +10,11 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,6 +80,8 @@ fun ProfileScreenl() {
     // Replace with your image URL
     val imageUrl = "https://e.rpp-noticias.io/xlarge/2021/11/02/140114_1168254.jpg"
     val IconPerson = Icons.Default.Person//IMPORTANTE no BORRAR el icono de la persona
+    val IconPhone = Icons.Default.Phone
+    val IconEmail = Icons.Default.Email
     Box( // caja gris (light)
         modifier = Modifier
             .fillMaxSize()
@@ -90,42 +95,59 @@ fun ProfileScreenl() {
             //horizontalAlignment = Alignment.CenterHorizontally --> centrado horizontal
             horizontalAlignment = Alignment.Start // Alineación a la izquierda
         ) {
-
             Row(
                 modifier = Modifier
                     .padding(20.dp)
-            ) {
+            ){
+                Column(){
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null,
+                        modifier = Modifier.size(25.dp),
+                        tint = Black
+                    )
+                }
+                Column(
+                    modifier = Modifier
+                        .padding(start = 260.dp)
+                ){
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp),
+                        tint = Black
+                    )
+                }
+            }
+            Row(
+                modifier = Modifier
+                    .padding(20.dp)
+            ){
                 ImageView(url = imageUrl, width = 100, height = 100)
                 Column(
                     // Espacio a la izquierda del texto para que...
                     // los siguientes elementos esten a la misma altura horizontal de la imagen
                     modifier = Modifier.padding(start = 16.dp)
-                ) {
-                    Text(
-                        "Carlos Tevez",
-                        color = if (isSystemInDarkTheme()) White400 else Black, // cambia color por estado
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                ){
+                    Text("Carlos Tevez", color= Black, fontSize = 28.sp, fontWeight = FontWeight.Bold)
                     Row(
                         // Alineación vertical al centro
                         verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = IconPerson,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = if (isSystemInDarkTheme()) White400 else Black // cambia color por estado
-                        )
+                    ){
+
                         Column(
                             modifier = Modifier.padding(start = 8.dp)
-                        ) {
-                            Text("ctevez",
-                                color = if (isSystemInDarkTheme()) White400 else Gray, // cambia color por estado
-                                fontSize = 14.sp)
-                            Text("Crossfitero",
-                                color = if (isSystemInDarkTheme()) White400 else Gray, // cambia color por estado
-                                fontSize = 14.sp)
+                        ){
+                            Row() {
+                                Icon(
+                                    imageVector = IconPerson,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp),
+                                    tint = Black
+                                )
+                                Text("ctevez", color= Gray, fontSize = 14.sp)
+                            }
+                            Text("Crossfitero", color= Gray, fontSize = 14.sp)
                         }
 
                     }
@@ -139,14 +161,12 @@ fun ProfileScreenl() {
                 modifier = Modifier.padding(start = 16.dp)
             ) {
                 Icon(
-                    imageVector = IconPerson,
+                    imageVector = IconPhone,
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp),
-                    tint = if (isSystemInDarkTheme()) White400 else Black // cambia color por estado
+                    modifier = Modifier.size(30.dp).padding(5.dp),
+                    tint = Black
                 )
-                Text("999 888 777",
-                    color = if (isSystemInDarkTheme()) White400 else Gray, // cambia color por estado
-                    fontSize = 14.sp)
+                Text("999 888 777", color= Gray, fontSize = 14.sp)
             }
             Row(
                 // Espacio a la izquierda del texto para que...
@@ -154,14 +174,12 @@ fun ProfileScreenl() {
                 modifier = Modifier.padding(start = 16.dp)
             ) {
                 Icon(
-                    imageVector = IconPerson,
+                    imageVector = IconEmail,
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp),
-                    tint = if (isSystemInDarkTheme()) White400 else Black, // cambia color por estado
+                    modifier = Modifier.size(30.dp).padding(5.dp),
+                    tint = Black,
                 )
-                Text("20041122@aloe.ulima.edu.pe",
-                    color = if (isSystemInDarkTheme()) White400 else Gray, // cambia color por estado
-                    fontSize = 14.sp)
+                Text("20041122@aloe.ulima.edu.pe",color= Gray, fontSize = 14.sp)
             }
 
             Spacer(modifier = Modifier.height(20.dp))//espacio vertical de 20.dp
@@ -236,4 +254,3 @@ fun ProfileScreenl() {
 fun ProfileScreen(viewModel: FormViewModel) {
     ProfileScreenl()
 }
-
