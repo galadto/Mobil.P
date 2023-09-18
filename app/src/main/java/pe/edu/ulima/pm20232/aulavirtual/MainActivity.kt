@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import pe.edu.ulima.pm20232.aulavirtual.screenmodels.FormViewModel
 import pe.edu.ulima.pm20232.aulavirtual.screens.LoginScreen
 import pe.edu.ulima.pm20232.aulavirtual.screens.PasswordScreen
+import pe.edu.ulima.pm20232.aulavirtual.screens.ProfileScreenl
 import pe.edu.ulima.pm20232.aulavirtual.screens.SplashScreen
 import pe.edu.ulima.pm20232.aulavirtual.ui.theme.AulaVirtualTheme
 
@@ -41,9 +42,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("main") {
                             // Replace with your main screen Composable
-                            PasswordScreen(loginScreenViewModel)
+                            //PasswordScreen(loginScreenViewModel)
                             //LoginScreen(loginScreenViewModel)
-                            //ProfileScreen()
+                            ProfileScreenl()
                         }
                     }
                 }

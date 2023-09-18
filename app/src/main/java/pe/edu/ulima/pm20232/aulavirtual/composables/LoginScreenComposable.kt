@@ -57,7 +57,7 @@ import pe.edu.ulima.pm20232.aulavirtual.ui.theme.White400
 @Composable
 fun TopScreen(screenHeightDp: Int){
     Column(modifier =Modifier.fillMaxSize()) {
-        Box(
+        Box(//Se configura las dimensiones de la caja
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Gray1200)
@@ -65,7 +65,7 @@ fun TopScreen(screenHeightDp: Int){
                 .height((screenHeightDp * 0.41).dp),
             contentAlignment = Alignment.TopCenter
         ) {
-            val paddingPercentage = 60;
+            val paddingPercentage = 60;//Se crean variables estaticas para modificar de manera uniforme el padding
             val paddingValue = with(LocalDensity.current) {
                 (paddingPercentage * 0.02f * 16.dp.toPx()).dp
             }
@@ -75,22 +75,22 @@ fun TopScreen(screenHeightDp: Int){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_ulima), // Replace with your SVG resource ID
+                    painter = painterResource(id = R.drawable.ic_ulima), //se usa el logo de la universidad
                     contentDescription = "Universidad de Lima",
                     modifier = Modifier.size(105.dp),
-                    colorFilter = ColorFilter.tint(if(isSystemInDarkTheme()) Color.Black else Orange500),
+                    colorFilter = ColorFilter.tint(if(isSystemInDarkTheme()) Color.Black else Orange500),// se le configura el colo
                 )
                 Text(
                     text = "Gimnasio ULima",
                     textAlign = TextAlign.Center,
                     color = Color.Black,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Bold,//se le puso negrita
                     modifier =  Modifier.padding(top = 20.dp, bottom = 20.dp),
                     style = MaterialTheme.typography.h4.copy(
                         fontSize = 40.sp,
-                        fontFamily = FontFamily(Font(R.font.kanit_regular)),
-                        color = if (isSystemInDarkTheme()) Black100 else Orange400 // Apply the custom text color here
+                        fontFamily = FontFamily(Font(R.font.kanit_regular)),//Se le puso un font en particular para el texto
+                        color = if (isSystemInDarkTheme()) Black100 else Orange400 // se aplica la configuracion para cambio a modo oscuro
                     )
                 )
             }
@@ -106,11 +106,11 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
             .padding(top = (screenHeightDp * 0.33).dp,), //.background(White400),
     ) {
         Box(modifier = Modifier.padding(
-            start = (screenWidthDp * 0.125).dp,
-            top = (6.dp),
-            bottom = (186.dp)
+            start = (screenWidthDp * 0.125).dp,//de donde comienza en el lado izquierdo
+            top = (6.dp),// cuanto de espacio hacia arriba hay
+            bottom = (186.dp)//cuanto de espacio hacia abaja tiene
         ),){
-            Box(
+            Box(//Se crea una caja interna
                 modifier = Modifier
                     .size(
                         (screenWidthDp * 0.70).dp,
@@ -120,7 +120,7 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                     .background(if (isSystemInDarkTheme()) Color.Gray else White400)
                     .padding(start = 20.dp, top = 34.dp, bottom = 10.dp, end = 20.dp),
             ) {
-                Column(
+                Column(//aqui se configura el formulario
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
@@ -157,8 +157,8 @@ fun LoginForm(screenWidthDp: Int, screenHeightDp: Int, viewModel: FormViewModel,
                                 .height(40.dp)
                                 .padding(start = 15.dp, end = 15.dp),
                             colors = ButtonDefaults.buttonColors(
-                                backgroundColor = if (isSystemInDarkTheme()) Color.Black else Orange500, // Button background color
-                                contentColor = if(isSystemInDarkTheme()) Color.White else Color.Black // Text and icon color
+                                backgroundColor = if (isSystemInDarkTheme()) Color.Black else Orange500, // boton de color naranja de la univerdidad
+                                contentColor = if(isSystemInDarkTheme()) Color.White else Color.Black // color negro del contenido
                             ),
                             contentPadding = PaddingValues(8.dp),
                         ) {
